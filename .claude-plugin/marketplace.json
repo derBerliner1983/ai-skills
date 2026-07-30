@@ -1,0 +1,12 @@
+{
+  "name": "dirks-skills",
+  "owner": {
+    "name": "Dirk Schaarschmidt"
+  },
+  "plugins": [
+    {
+      "id": "system-time-skill",
+      "path": "./get-time/.claude-plugin"
+    }
+  ]
+}
