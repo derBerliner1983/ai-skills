@@ -3,6 +3,6 @@
   "description": "Holt die aktuelle Systemzeit via Shell (Get-Date oder date).",
   "version": "1.0.0",
   "author": {
-    "name": "Dein Name"
+    "name": "Dirk Schaarschmidt"
   }
 }
