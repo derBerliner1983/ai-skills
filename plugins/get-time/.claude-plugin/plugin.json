@@ -1,0 +1,9 @@
+{
+  "name": "system-time-skill",
+  "description": "Gibt dem LLM das aktuelle Datum und die Uhrzeit.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Dirk Schaarschmidt",
+    "email": "schaarschmidt.dirk@gmail.com"
+  }
+}
