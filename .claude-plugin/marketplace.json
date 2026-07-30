@@ -6,7 +6,7 @@
   "plugins": [
     {
       "id": "system-time-skill",
-      "path": "./get-time/.claude-plugin"
+      "path": "./get-time/plugin"
     }
   ]
 }
