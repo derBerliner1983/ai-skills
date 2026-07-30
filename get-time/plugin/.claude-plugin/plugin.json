@@ -1,8 +1,15 @@
 {
   "name": "system-time-skill",
   "version": "1.0.0",
-  "description": "Holt die aktuelle Windows-Systemzeit via Get-Date oder Linux/Mac via date.",
+  "description": "Gibt dem LLM das aktuelle Datum und die Uhrzeit.",
   "author": {
     "name": "Dirk Schaarschmidt"
+  },
+  "endpoints": {
+    "time": {
+      "type": "mcp",
+      "command": "npx",
+      "args": ["-y", "@teialabs/mcp-time"]
+    }
   }
 }
