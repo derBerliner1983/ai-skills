@@ -16,6 +16,16 @@
       "category": "productivity",
       "source": "./get-time",
       "homepage": "https://github.com/derBerliner1983/claude-plugin"
+    },
+    {
+      "name": "obsidian-vault-brain",
+      "description": "Sucht auf der Maschine nach einer Nextcloud-Installation mit einem Obsidian-Vault (Knowledge-Vault) und nutzt es als zweites Gehirn — folgt dabei dem im Vault hinterlegten Protokoll (CLAUDE.md, INDEX.md).",
+      "author": {
+        "name": "Dirk Schaarschmidt"
+      },
+      "category": "productivity",
+      "source": "./obsidian-vault-brain",
+      "homepage": "https://github.com/derBerliner1983/claude-plugin"
     }
   ]
 }
