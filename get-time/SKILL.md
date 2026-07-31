@@ -106,6 +106,16 @@ Kombination) – nicht mehr, nicht weniger. Werte unverändert aus der
 Kommandozeilen-Ausgabe übernehmen, nichts nachträglich korrigieren oder
 "plausibilisieren".
 
+## Schritt 7: Keine Nacherzählung, nur Formatierung
+
+Die Werte aus der Bash-Ausgabe dürfen NUR in Form (Tabelle, Liste, Emoji etc.)
+gebracht werden – niemals inhaltlich neu getippt oder "aus dem Kopf"
+wiederholt. Beim Erstellen der Tabelle: für jede Zeile den exakten
+`HH:MM`-Wert aus der jeweiligen Bash-Ausgabezeile kopieren, nicht neu
+schreiben. Am Ende kurz gegenprüfen: steht in der Tabelle für Bangkok exakt
+der Wert, der in `echo "Bangkok: $(TZ='Asia/Bangkok' date ...)"` stand? Wenn
+nicht exakt identisch: Tabelle korrigieren, bevor sie ausgegeben wird.
+
 ## Beispiele
 
 - "Wie spät ist es in Bangkok?"
