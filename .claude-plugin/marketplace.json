@@ -26,6 +26,16 @@
       "category": "productivity",
       "source": "./obsidian-vault-brain",
       "homepage": "https://github.com/derBerliner1983/claude-plugin"
+    },
+    {
+      "name": "schreibstil-vault",
+      "description": "Wendet den persönlichen Schreibstil aus 00 Kontext/Schreibstil.md (Obsidian-Vault) an, wenn E-Mails, Texte oder Anleitungen formuliert werden sollen.",
+      "author": {
+        "name": "Dirk Schaarschmidt"
+      },
+      "category": "productivity",
+      "source": "./schreibstil-vault",
+      "homepage": "https://github.com/derBerliner1983/claude-plugin"
     }
   ]
 }
