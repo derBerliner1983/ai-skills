@@ -1,0 +1,8 @@
+{
+  "name": "schreibstil-vault",
+  "version": "1.0.0",
+  "description": "Wendet den persönlichen Schreibstil aus 00 Kontext/Schreibstil.md (Obsidian-Vault) an, wenn E-Mails, Texte oder Anleitungen formuliert werden sollen.",
+  "author": {
+    "name": "Dirk Schaarschmidt"
+  }
+}
