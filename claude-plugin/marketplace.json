@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "dirks-skills",
+  "description": "Dirks private Claude Code Skills und Erweiterungen",
+  "owner": {
+    "name": "Dirk Schaarschmidt",
+    "email": "deine.email@beispiel.de"
+  },
+  "plugins": [
+    {
+      "name": "system-time-skill",
+      "description": "Gibt dem LLM das aktuelle Datum und die Uhrzeit via MCP Time Server.",
+      "author": {
+        "name": "Dirk Schaarschmidt"
+      },
+      "category": "productivity",
+      "source": "./get-time/plugin",
+      "homepage": "https://github.com/derBerliner1983/ai-skills"
+    }
+  ]
+}
