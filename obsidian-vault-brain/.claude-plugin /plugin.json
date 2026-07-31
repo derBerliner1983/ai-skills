@@ -1,0 +1,8 @@
+{
+  "name": "obsidian-vault-brain",
+  "version": "1.0.0",
+  "description": "Sucht auf der Maschine nach einer Nextcloud-Installation mit einem Obsidian-Vault (Knowledge-Vault) und nutzt es als zweites Gehirn — folgt dabei dem im Vault hinterlegten Protokoll (CLAUDE.md, INDEX.md).",
+  "author": {
+    "name": "Dirk Schaarschmidt"
+  }
+}
