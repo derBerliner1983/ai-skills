@@ -14,8 +14,8 @@
         "name": "Dirk Schaarschmidt"
       },
       "category": "productivity",
-      "source": "./get-time/plugin",
-      "homepage": "https://github.com/derBerliner1983/ai-skills"
+      "source": "./get-time",
+      "homepage": "https://github.com/derBerliner1983/claude-plugin"
     }
   ]
 }
