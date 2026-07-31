@@ -1,43 +1,47 @@
 ---
 name: get-system-time
-description: Verwende diesen Skill, um das aktuelle Datum und die exakte Uhrzeit abzufragen – für einen Ort oder mehrere gleichzeitig.
+description: Verwende diesen Skill, um Datum, Wochentag und/oder Uhrzeit abzufragen – für einen Ort oder mehrere gleichzeitig, wahlweise einzeln oder kombiniert.
 allowed-tools:
   - Bash
 ---
-# Systemzeit abfragen (für eine oder mehrere Städte/Zeitzonen)
+# Systemzeit abfragen (flexibel: nur Zeit, nur Datum, nur Tag, oder Kombination)
 
 ## Grundregel
-NIEMALS Wochentag oder Uhrzeit für eine Stadt manuell umrechnen. Für JEDE angefragte
-Stadt/Zeitzone eine EIGENE Kommandozeile ausführen und das Ergebnis unverändert
-übernehmen (inkl. Wochentag, Datum, Uhrzeit).
+NIEMALS Wochentag, Datum oder Uhrzeit manuell umrechnen. Für JEDE angefragte
+Stadt/Zeitzone einen EIGENEN `date`-Aufruf mit passendem Format ausführen und
+das Ergebnis unverändert übernehmen.
 
-## Ablauf
+## Schritt 1: Format je nach Anfrage wählen
 
-1. Ermittle für jede angefragte Stadt die passende IANA-Zeitzone
-   (z.B. Berlin → Europe/Berlin, Bangkok → Asia/Bangkok, Tokio → Asia/Tokyo).
+| Nutzer will...          | Format-String              |
+|--------------------------|-----------------------------|
+| nur Uhrzeit              | `+%H:%M:%S` (oder `+%H:%M`) |
+| nur Datum                | `+%d.%m.%Y`                 |
+| nur Wochentag            | `+%A`                       |
+| Datum + Wochentag        | `+%A, %d.%m.%Y`              |
+| alles (Datum+Tag+Zeit)   | `+%A, %d.%m.%Y %H:%M:%S`     |
 
-2. Führe für JEDE Stadt einen eigenen Befehl aus (in EINEM Bash-Call, mehrere
-   Zeilen, damit alle Werte aus derselben Sekunde stammen):
+(Bei Unklarheit lieber alles ausgeben als zu wenig.)
+
+## Schritt 2: Pro Stadt ein eigener Aufruf, gleiches Format für alle
 
 ```bash
-   echo "Berlin:  $(TZ='Europe/Berlin' date)"
-   echo "Bangkok: $(TZ='Asia/Bangkok' date)"
-   echo "Tokio:   $(TZ='Asia/Tokyo' date)"
+echo "Berlin:  $(TZ='Europe/Berlin' date '+%A, %d.%m.%Y %H:%M')"
+echo "Bangkok: $(TZ='Asia/Bangkok' date '+%A, %d.%m.%Y %H:%M')"
 ```
 
-   (Beliebig viele Zeilen für beliebig viele Städte – einfach pro Stadt eine
-   weitere `echo "Name: $(TZ='Region/Stadt' date)"`-Zeile ergänzen.)
+Beliebig viele Städte = beliebig viele Zeilen, alle im selben Bash-Call
+(damit alle Werte aus derselben Sekunde stammen).
 
-3. Falls für eine Stadt keine TZ-Zone bekannt ist oder das Ergebnis unplausibel
-   wirkt: mit `timedatectl list-timezones | grep -i <stadt>` die korrekte
-   Zone suchen. Nur wenn das nichts liefert, als letzten Fallback kurz im Web
-   nach "IANA Zeitzone <Stadt>" suchen.
+## Schritt 3: Zeitzone unbekannt?
+`timedatectl list-timezones | grep -i <stadt>` nutzen. Nur wenn das nichts
+liefert: kurz im Web nach "IANA Zeitzone <Stadt>" suchen.
 
-4. Gib dem Nutzer für jede Stadt Datum, Wochentag und Uhrzeit GENAU so aus,
-   wie sie in der Kommandozeilen-Ausgabe stehen – nicht neu berechnen oder
-   "im Kopf" auf einen anderen Wochentag umlegen, auch wenn es sich falsch
-   anfühlt.
+## Schritt 4: Ausgabe
+Genau das ausgeben, wonach gefragt wurde – nicht mehr, nicht weniger. Werte
+1:1 aus der Kommandozeilen-Ausgabe übernehmen, nichts im Kopf nachrechnen.
 
-## Beispiel-Ausgabe an den Nutzer
-- Berlin: Freitag, 31.07.2026, 13:50 Uhr
-- Bangkok: Freitag, 31.07.2026, 18:50 Uhr
+## Beispiele
+- "Wie spät ist es in Bangkok?" → nur `%H:%M` für Bangkok
+- "Welcher Wochentag ist heute in Berlin und Tokio?" → nur `%A` für beide
+- "Datum und Uhrzeit für Berlin, Bangkok, New York" → `%A, %d.%m.%Y %H:%M` für alle drei
